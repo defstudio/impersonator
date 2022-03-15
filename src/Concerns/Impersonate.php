@@ -46,7 +46,7 @@ trait Impersonate
     {
         $parameters = ['user' => $this];
 
-        if ($redirect) {
+        if ($redirect_url) {
             $parameters['return_url'] = $redirect_url;
         }
         return route('redirect.start', $parameters);
