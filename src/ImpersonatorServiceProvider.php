@@ -22,6 +22,4 @@ class ImpersonatorServiceProvider extends PackageServiceProvider
         $kernel = $this->app->make(Kernel::class);
         $kernel->pushMiddleware(AppendUnimpersonateButton::class);
     }
-
-
 }
