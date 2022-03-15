@@ -2,11 +2,13 @@
 
 namespace DefStudio\Impersonator\Middleware;
 
+use Closure;
+
 class AppendUnimpersonateButton
 {
-    public function handle($request, \Closure $next): mixed
+    public function handle($request, Closure $next): mixed
     {
-        $response = $next();
+        $response = $next($request);
 
         return $response;
     }
