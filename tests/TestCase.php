@@ -2,9 +2,9 @@
 
 namespace DefStudio\Impersonator\Tests;
 
+use DefStudio\Impersonator\ImpersonatorServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use DefStudio\Impersonator\ImpersonatorServiceProvider;
 
 class TestCase extends Orchestra
 {

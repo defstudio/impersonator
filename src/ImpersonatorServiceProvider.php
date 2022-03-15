@@ -4,7 +4,6 @@ namespace DefStudio\Impersonator;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use DefStudio\Impersonator\Commands\ImpersonatorCommand;
 
 class ImpersonatorServiceProvider extends PackageServiceProvider
 {
