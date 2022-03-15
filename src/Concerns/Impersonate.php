@@ -27,7 +27,7 @@ trait Impersonate
 
     public function is_impersonated(): bool
     {
-        return !empty(session('impersonator.id'));
+        return ! empty(session('impersonator.id'));
     }
 
     public function impersonator(): self|null
@@ -49,6 +49,7 @@ trait Impersonate
         if ($redirect_url) {
             $parameters['return_url'] = $redirect_url;
         }
+
         return route('redirect.start', $parameters);
     }
 
