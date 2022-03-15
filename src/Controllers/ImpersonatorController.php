@@ -5,8 +5,6 @@
 namespace DefStudio\Impersonator\Controllers;
 
 use DefStudio\Impersonator\Concerns\Impersonate;
-use http\Client\Curl\User;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,9 +50,10 @@ class ImpersonatorController
 
         $impersonator->impersonate($user);
 
-        if($return_url = request()->get('return_url')){
+        if ($return_url = request()->get('return_url')) {
             return redirect()->to($return_url);
         }
+
         return redirect()->intended();
     }
 }
