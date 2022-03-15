@@ -23,7 +23,7 @@ class ImpersonatorController
             abort(404);
         }
 
-        $return_to = $user->get_impersonator_redirect_url();
+        $return_to = $user->get_impersonator_stop_redirect_url();
 
         $user->stop_impersonating();
 

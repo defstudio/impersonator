@@ -27,7 +27,7 @@ trait Impersonate
 
     public function is_impersonated(): bool
     {
-        return ! empty(session('impersonator.id'));
+        return !empty(session('impersonator.id'));
     }
 
     public function impersonator(): self|null
@@ -37,9 +37,19 @@ trait Impersonate
         return self::find($impersonator_id);
     }
 
-    public function get_impersonator_redirect_url(): string|null
+    public function get_impersonator_stop_redirect_url(): string|null
     {
         return session('impersonator.return_url');
+    }
+
+    public function get_impersonate_url(string $redirect_url = null): string
+    {
+        $parameters = ['user' => $this];
+
+        if ($redirect) {
+            $parameters['return_url'] = $redirect_url;
+        }
+        return route('redirect.start', $parameters);
     }
 
     public function impersonate(self $another_user): bool
