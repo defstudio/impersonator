@@ -1,5 +1,5 @@
 <div class="fixed bottom-5 right-5">
-    <form method="POST" action="{{URL::temporarySignedRoute('impersonate.stop', now()->addDay())}}">
+    <form method="POST" action="{{route('impersonate.stop')}}">
         @method('delete')
         <button class=" px-4 py-2
                     items-center
