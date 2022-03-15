@@ -59,6 +59,21 @@ $impersonator = new DefStudio\Impersonator();
 echo $impersonator->echoPhrase('Hello, DefStudio!');
 ```
 
+## Tailwind css
+
+Impersonator use tailwind css to render its view, consider adding `'./vendor/defstudio/impersonator/**/*.blade.php'` to your `tailwind.config.js` file
+
+```javascript
+
+module.exports = {
+    content: [
+        //..
+        './vendor/defstudio/impersonator/**/*.blade.php',
+    ],
+    //..
+}
+```
+
 ## Testing
 
 ```bash
