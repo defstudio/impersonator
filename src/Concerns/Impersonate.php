@@ -1,7 +1,8 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 
 namespace DefStudio\Impersonator\Concerns;
 
+use DefStudio\Impersonator\Exception\ImpersonatorException;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -24,17 +25,22 @@ trait Impersonate
 
     public function is_impersonated(): bool
     {
-        return ! empty(session('impersonator'));
+        return !empty(session('impersonator.id'));
     }
 
     public function impersonator(): self|null
     {
-        $impersonator_id = session('impersonator');
+        $impersonator_id = session('impersonator.id');
 
         return self::find($impersonator_id);
     }
 
-    public function impersonate(self $another_user): self
+    public function get_impersonator_redirect_url(): string|null
+    {
+        return session('impersonator.return_url');
+    }
+
+    public function impersonate(self $another_user): bool
     {
         session()->invalidate();
         session()->regenerateToken();
@@ -42,8 +48,25 @@ trait Impersonate
         session()->regenerate();
         Auth::login($another_user);
 
-        session()->put('impersonator', $this->id);
+        session()->put('impersonator.id', $this->id);
+        session()->put('impersonator.return_url', request()->header('referer'));
 
-        return $another_user;
+        return true;
+    }
+
+    public function stop_impersonating(): void
+    {
+        $this->is_impersonated() || throw ImpersonatorException::not_impersonated();
+
+        $impersonator = $this->impersonator();
+
+        $impersonator || throw ImpersonatorException::impersonatorNotFound();
+
+        session()->forget('impersonator');
+        session()->invalidate();
+        session()->regenerateToken();
+
+        session()->regenerate();
+        Auth::login($impersonator);
     }
 }

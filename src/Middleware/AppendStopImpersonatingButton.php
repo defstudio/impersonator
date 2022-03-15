@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 
-class AppendUnimpersonateButton
+class AppendStopImpersonatingButton
 {
     public function handle($request, Closure $next): mixed
     {
@@ -29,7 +29,7 @@ class AppendUnimpersonateButton
         $before_body_close = str($content)->before('</body>');
         $after_body_close = str($content)->after('</body>');
 
-        $button = Blade::render('impersonator:unimpersonate');
+        $button = Blade::render('impersonator::stop-impersonating-button');
 
         $content = $before_body_close
             ->append($button)

@@ -1,8 +1,8 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 
 namespace DefStudio\Impersonator;
 
-use DefStudio\Impersonator\Middleware\AppendUnimpersonateButton;
+use DefStudio\Impersonator\Middleware\AppendStopImpersonatingButton;
 use Illuminate\Contracts\Http\Kernel;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -14,12 +14,13 @@ class ImpersonatorServiceProvider extends PackageServiceProvider
         $package
             ->name('impersonator')
             ->hasConfigFile()
-            ->hasViews();
+            ->hasRoute('web')
+            ->hasViews('impersonator');
     }
 
     public function packageRegistered(): void
     {
         $kernel = $this->app->make(Kernel::class);
-        $kernel->pushMiddleware(AppendUnimpersonateButton::class);
+        $kernel->pushMiddleware(AppendStopImpersonatingButton::class);
     }
 }
