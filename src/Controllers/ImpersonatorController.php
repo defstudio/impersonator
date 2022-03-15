@@ -5,6 +5,8 @@
 namespace DefStudio\Impersonator\Controllers;
 
 use DefStudio\Impersonator\Concerns\Impersonate;
+use http\Client\Curl\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,5 +34,27 @@ class ImpersonatorController
         }
 
         return redirect()->back();
+    }
+
+    public function start($user): RedirectResponse
+    {
+        /** @var Impersonate $user */
+        $user = Auth::createUserProvider()->retrieveById($user);
+
+        abort_if($user === null, 404);
+
+        /** @var Impersonate $impersonator */
+        $impersonator = Auth::user();
+
+        abort_if($impersonator->can_impersonate(), 403);
+
+        abort_if($user->can_be_impersonated(), 403);
+
+        $impersonator->impersonate($user);
+
+        if($return_url = request()->get('return_url')){
+            return redirect()->to($return_url);
+        }
+        return redirect()->intended();
     }
 }
