@@ -37,7 +37,7 @@ class ImpersonatorController
     public function start($user): RedirectResponse
     {
         /** @var Impersonate $user */
-        $user = Auth::createUserProvider()->retrieveById($user);
+        $user = Auth::createUserProvider(config('auth.guards.web.provider'))->retrieveById($user);
 
         abort_if($user === null, 404);
 
