@@ -6,7 +6,6 @@ use Exception;
 
 class ImpersonatorException extends Exception
 {
-
     public static function not_impersonated(): self
     {
         return new self("User is not impersonated");

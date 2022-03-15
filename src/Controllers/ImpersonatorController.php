@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnhandledExceptionInspection */
+<?php
+
+/** @noinspection PhpUnhandledExceptionInspection */
 
 namespace DefStudio\Impersonator\Controllers;
 
@@ -13,11 +15,11 @@ class ImpersonatorController
         /** @var Impersonate $user */
         $user = Auth::user();
 
-        if($user === null){
+        if ($user === null) {
             abort(404);
         }
 
-        if(!$user->is_impersonated()){
+        if (! $user->is_impersonated()) {
             abort(404);
         }
 
@@ -25,7 +27,7 @@ class ImpersonatorController
 
         $user->stop_impersonating();
 
-        if($return_to){
+        if ($return_to) {
             return redirect()->to($return_to);
         }
 

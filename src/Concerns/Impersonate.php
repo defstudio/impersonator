@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnhandledExceptionInspection */
+<?php
+
+/** @noinspection PhpUnhandledExceptionInspection */
 
 namespace DefStudio\Impersonator\Concerns;
 
@@ -25,7 +27,7 @@ trait Impersonate
 
     public function is_impersonated(): bool
     {
-        return !empty(session('impersonator.id'));
+        return ! empty(session('impersonator.id'));
     }
 
     public function impersonator(): self|null
