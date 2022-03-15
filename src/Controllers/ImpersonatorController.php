@@ -44,9 +44,9 @@ class ImpersonatorController
         /** @var Impersonate $impersonator */
         $impersonator = Auth::user();
 
-        abort_if(!$impersonator->can_impersonate(), 403);
+        abort_if(! $impersonator->can_impersonate(), 403);
 
-        abort_if(!$user->can_be_impersonated(), 403);
+        abort_if(! $user->can_be_impersonated(), 403);
 
         $impersonator->impersonate($user);
 
