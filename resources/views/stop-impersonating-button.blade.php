@@ -1,6 +1,7 @@
 <div class="fixed bottom-5 right-5">
     <form method="POST" action="{{route('impersonate.stop')}}">
         @method('delete')
+        @csrf
         <button class=" px-4 py-2
                     items-center
                     text-white font-semibold text-xs uppercase
