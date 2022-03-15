@@ -24,7 +24,7 @@ trait Impersonate
 
     public function is_impersonated(): bool
     {
-        return !empty(session('impersonator'));
+        return ! empty(session('impersonator'));
     }
 
     public function impersonator(): self|null
