@@ -35,7 +35,6 @@
     "autoload": {
         "psr-4": {
             "DefStudio\\Impersonator\\": "src",
-            "DefStudio\\Impersonator\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
@@ -55,10 +54,7 @@
         "laravel": {
             "providers": [
                 "DefStudio\\Impersonator\\ImpersonatorServiceProvider"
-            ],
-            "aliases": {
-                "Impersonator": "DefStudio\\Impersonator\\Facades\\Impersonator"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
