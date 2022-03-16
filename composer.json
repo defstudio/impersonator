@@ -34,7 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DefStudio\\Impersonator\\": "src",
+            "DefStudio\\Impersonator\\": "src"
         }
     },
     "autoload-dev": {
