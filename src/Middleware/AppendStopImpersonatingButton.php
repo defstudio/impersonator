@@ -22,7 +22,7 @@ class AppendStopImpersonatingButton
             return $response;
         }
 
-        if (! str($content)->startsWith("<!DOCTYPE html>")) {
+        if (! str($content)->lower()->startsWith("<!doctype html>")) {
             return $response;
         }
 
