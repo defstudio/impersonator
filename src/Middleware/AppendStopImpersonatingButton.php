@@ -12,31 +12,36 @@ class AppendStopImpersonatingButton
     {
         $response = $next($request);
 
-        if (! Auth::user()?->is_impersonated()) {
+        if (!Auth::user()?->is_impersonated()) {
             return $response;
         }
 
         $content = $response->getContent();
 
-        if (! $content) {
+        if (!$content) {
             return $response;
         }
 
-        if (! str($content)->startsWith("<!DOCTYPE html>")) {
+        if (!str($content)->startsWith("<!DOCTYPE html>")) {
             return $response;
         }
 
         $before_body_close = str($content)->before('</body>');
         $after_body_close = str($content)->after('</body>');
 
-        $button = Blade::render('impersonator::stop-impersonating-button');
+        $stop_button_view = match (config('impersonator.css.framework')) {
+            'bootstrap_4' => 'impersonator::bootstrap.4.stop-impersonating-button',
+            default => 'impersonator::tailwind.3.stop-impersonating-button',
+        };
+
+        $button = Blade::render($stop_button_view);
 
         $content = $before_body_close
             ->append($button)
             ->append('</body>')
             ->append($after_body_close);
 
-        $response->setContent((string)$content);
+        $response->setContent((string) $content);
 
         return $response;
     }
