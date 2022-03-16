@@ -12,17 +12,17 @@ class AppendStopImpersonatingButton
     {
         $response = $next($request);
 
-        if (!Auth::user()?->is_impersonated()) {
+        if (! Auth::user()?->is_impersonated()) {
             return $response;
         }
 
         $content = $response->getContent();
 
-        if (!$content) {
+        if (! $content) {
             return $response;
         }
 
-        if (!str($content)->startsWith("<!DOCTYPE html>")) {
+        if (! str($content)->startsWith("<!DOCTYPE html>")) {
             return $response;
         }
 
