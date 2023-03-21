@@ -17,12 +17,12 @@ trait Impersonate
 {
     public function can_impersonate(): bool
     {
-        return true;
+        return false;
     }
 
     public function can_be_impersonated(): bool
     {
-        return true;
+        return false;
     }
 
     public function is_impersonated(): bool
