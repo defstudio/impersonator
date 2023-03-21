@@ -4,8 +4,9 @@
 # Easily impersonate another user for debugging purpose
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/defstudio/impersonator.svg?style=flat-square)](https://packagist.org/packages/defstudio/impersonator)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/defstudio/impersonator/run-tests?label=tests)](https://github.com/defstudio/impersonator/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/defstudio/impersonator/Check%20&%20fix%20styling?label=code%20style)](https://github.com/defstudio/impersonator/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/defstudio/impersonator/run-tests.yml?branch=main&label=tests)](https://github.com/defstudio/impersonator/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/defstudio/impersonator/php-cs-fixer.yml?branch=main&label=code%20style)](https://github.com/defstudio/impersonator/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![Static Analysis Action Status](https://img.shields.io/github/actions/workflow/status/defstudio/impersonator/phpstan.yml?branch=main&label=static%20analysis)](https://github.com/defstudio/impersonator/actions?query=workflow%3A"PHPStan"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/defstudio/impersonator.svg?style=flat-square)](https://packagist.org/packages/defstudio/impersonator)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
