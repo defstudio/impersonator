@@ -12,6 +12,16 @@ class AppendStopImpersonatingButton
     {
         $response = $next($request);
 
+        $user = Auth::user();
+
+        if(!$user){
+            return $response;
+        }
+
+        if(!method_exists($user, 'is_impersonated')){
+            return $response
+        }
+
         if (! Auth::user()?->is_impersonated()) {
             return $response;
         }
